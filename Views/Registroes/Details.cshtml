@@ -1,0 +1,41 @@
+﻿@model DiarioEmocional.Models.Registro
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Detalhes</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.IntensidadeID)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Intensidade.Descricao)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Situacao)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Situacao)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Comportamento)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Comportamento)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Emocao)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Emocao.Descricao)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" class="btn btn-success" asp-route-id="@Model.ID">Editar</a> |
+    <a asp-action="Index" class="btn btn-dark">Voltar a Listagem</a>
+</div>

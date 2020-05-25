@@ -1,0 +1,68 @@
+﻿@model IEnumerable<Usuario>
+@{
+    ViewData["Title"] = "UsuarioLogado";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Pacientes</h1>
+
+@*<table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.UserName)
+                </th>
+                <th>
+                    E-mail
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id">Dados</a> |
+                        <a asp-action="Details" asp-route-id="@item.Id">Progresso Cognitivo</a> |
+
+                    </td>
+                    <td>
+                            @{
+                                var base64 = Convert.ToBase64String(item.PhotoFile); ;
+                                var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                            }
+                            <img src='@imgSrc' width="100" height="100" />
+                        </td>
+                </tr>
+            }
+        </tbody>
+    </table>*@
+
+    @foreach (var item in Model)
+    {
+<div class="accordion" id="@Html.DisplayFor(modelItem => item.UserName)@Html.DisplayFor(modelItem => item.Id)">
+    <div class="card">
+        <div class="card-header" id="@Html.DisplayFor(modelItem => item.NormalizedUserName)">
+            <h5 class="mb-0">
+                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#@Html.DisplayFor(modelItem => item.UserName)" aria-expanded="true" aria-controls=" @Html.DisplayFor(modelItem => item.UserName)">
+                    @Html.DisplayFor(modelItem => item.NormalizedUserName) - @Html.DisplayFor(modelItem => item.UserName)
+                </button>
+            </h5>
+        </div>
+        <div id="@Html.DisplayFor(modelItem => item.UserName)" class="collapse" aria-labelledby="@Html.DisplayFor(modelItem => item.UserName)@Html.DisplayFor(modelItem => item.Id)">
+            <div class="card-body">
+                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+            </div>
+        </div>
+    </div>
+</div>
+    }
+    
