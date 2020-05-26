@@ -61,6 +61,22 @@ namespace DiarioEmocional.Controllers
             return null;
         }
 
+        public IActionResult VisualizarRegistrosPaciente(string id)
+        {
+            var psicoId = GetUser().Result.Id;
+            if (!string.IsNullOrEmpty(id))
+            {
+                var registros = _context.Registros
+                                .Where(x => x.UsuarioInclusao == id
+                                        && x.EnviarPsicoterapeuta //lista somente registros que o paciente enviou
+                                        && x.Ativo).ToList();
+                
+                
+                return View(registros);
+            }
+            return null;
+        }
+
         public IActionResult Login()
         {
             return View();

@@ -1,0 +1,58 @@
+﻿@model IEnumerable<DiarioEmocional.Models.Registro>
+
+@{
+    ViewData["Title"] = "VisualizarRegistrosPaciente";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Histórico de Emoções Paciente</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Situacao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Comportamento)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.NomePaciente)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.Emocao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Intensidade)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            
+            <td>
+                @Html.DisplayFor(modelItem => item.Situacao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Comportamento)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.NomePaciente)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Emocao.ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Intensidade.ID)
+            </td>
+            @*<td>
+                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+            </td>*@
+        </tr>
+}
+    </tbody>
+</table>
