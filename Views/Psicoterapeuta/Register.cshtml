@@ -22,8 +22,11 @@
             <label for="UserName">Usuário</label>
         </div>
         <div class="form-label-group">
-            <input type="password" id="inputPassword"  asp-for="Password" name="password" class="form-control" placeholder="Senha" required>
+            <input type="password" id="inputPassword" asp-for="Password" name="password" class="form-control" placeholder="Senha" aria-describedby="passwordHelpBlock" required>
             <label for="inputPassword">Senha</label>
+            <small id="passwordHelpBlock" class="form-text text-muted">
+                Sua senha deve ter entre 8 e 20 caracteres, os quais DEVEM CONTER letras e números, sem espaços.
+            </small>
         </div>
 
         @*<div class="form-group">

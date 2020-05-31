@@ -38,7 +38,8 @@ namespace DiarioEmocional.Controllers
         // GET: Emocaos
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Emocoes.Where(x=>x.Ativo).ToListAsync());
+            _usuarioLogado = GetUser().Result;
+            return View(await _context.Emocoes.Where(x=>x.UsuarioInclusao==_usuarioLogado.Id && x.Ativo).ToListAsync());
         }
 
         // GET: Emocaos/Details/5

@@ -38,7 +38,7 @@ namespace DiarioEmocional.Controllers
         public async Task<IActionResult> Index()
         {
             _usuarioLogado = GetUser().Result;
-            return View(await _context.Intensidades.Where(x=>x.Ativo).ToListAsync());
+            return View(await _context.Intensidades.Where(x=>x.UsuarioInclusao==_usuarioLogado.Id && x.Ativo).ToListAsync());
         }
 
         // GET: Intensidade/Details/5

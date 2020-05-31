@@ -66,8 +66,9 @@ namespace DiarioEmocional.Controllers
         // GET: Registroes/Create
         public IActionResult Create()
         {
-            ViewData["EmocaoID"] = new SelectList(_context.Emocoes, "ID", "Descricao");
-            ViewData["IntensidadeID"] = new SelectList(_context.Intensidades, "ID", "Descricao");
+            _usuarioLogado = GetUser().Result;
+            ViewData["EmocaoID"] = new SelectList(_context.Emocoes.Where(x=>x.UsuarioInclusao == _usuarioLogado.PsicoterapeutaID && x.Ativo), "ID", "Descricao");
+            ViewData["IntensidadeID"] = new SelectList(_context.Intensidades.Where(x => x.UsuarioInclusao == _usuarioLogado.PsicoterapeutaID && x.Ativo), "ID", "Descricao");
             return View();
         }
 
@@ -90,14 +91,15 @@ namespace DiarioEmocional.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["EmocaoID"] = new SelectList(_context.Emocoes, "ID", "Descricao", registro.EmocaoID);
-            ViewData["IntensidadeID"] = new SelectList(_context.Intensidades, "ID", "Descricao",registro.IntensidadeID);
+            ViewData["EmocaoID"] = new SelectList(_context.Emocoes.Where(x => x.UsuarioInclusao == _usuarioLogado.PsicoterapeutaID && x.Ativo), "ID", "Descricao", registro.EmocaoID);
+            ViewData["IntensidadeID"] = new SelectList(_context.Intensidades.Where(x=>x.UsuarioInclusao == _usuarioLogado.PsicoterapeutaID && x.Ativo), "ID", "Descricao",registro.IntensidadeID);
             return View(registro);
         }
 
         // GET: Registroes/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            _usuarioLogado = GetUser().Result;
             if (id == null)
             {
                 return NotFound();
@@ -108,8 +110,8 @@ namespace DiarioEmocional.Controllers
             {
                 return NotFound();
             }
-            ViewData["EmocaoID"] = new SelectList(_context.Emocoes, "ID", "Descricao", registro.EmocaoID);
-            ViewData["IntensidadeID"] = new SelectList(_context.Intensidades, "ID", "Descricao", registro.IntensidadeID);
+            ViewData["EmocaoID"] = new SelectList(_context.Emocoes.Where(x=>x.UsuarioInclusao== _usuarioLogado.PsicoterapeutaID && x.Ativo), "ID", "Descricao", registro.EmocaoID);
+            ViewData["IntensidadeID"] = new SelectList(_context.Intensidades.Where(x=>x.UsuarioInclusao==_usuarioLogado.PsicoterapeutaID && x.Ativo), "ID", "Descricao", registro.IntensidadeID);
             return View(registro);
         }
 
