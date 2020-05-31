@@ -55,7 +55,7 @@
                 <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#@Html.DisplayFor(modelItem => item.UserName)" aria-expanded="true" aria-controls=" @Html.DisplayFor(modelItem => item.UserName)">
                     @Html.DisplayFor(modelItem => item.NormalizedUserName) - @Html.DisplayFor(modelItem => item.UserName)
                 </button>
-                <a asp-action="VisualizarRegistrosPaciente" class="btn btn-success" asp-route-id="@item.Id">Visualizar registros</a>
+                <a asp-action="VisualizarRegistrosPaciente" class="btn btn-primary" asp-route-id="@item.Id">Visualizar registros</a>
             </h5>
 
         </div>

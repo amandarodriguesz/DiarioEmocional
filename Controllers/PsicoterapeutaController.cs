@@ -41,10 +41,11 @@ namespace DiarioEmocional.Controllers
 
         public IActionResult Index()
         {
+
+
             return View("UsuarioLogado");
         }
 
-        [HttpGet,ActionName("UsuarioLogado")]
         public IActionResult UsuarioLogado()
         {
             var psicoId = GetUser().Result.Id;
@@ -132,6 +133,10 @@ namespace DiarioEmocional.Controllers
                             var permissao = await _userManager.AddToRoleAsync(user, "Psicoterapeuta");
                             if (permissao.Succeeded)
                             {
+                                var resultLogado = await _signInManager.PasswordSignInAsync(psicoterapeutaModelView.UserName, psicoterapeutaModelView.Password, false, false);
+
+                                if (resultLogado.Succeeded)
+                                    return RedirectToAction("UsuarioLogado", "Psicoterapeuta");
 
                                 _logger.LogInformation("Psicoterapeuta cadastrado com sucesso.");
                                 return Redirect("/Psicoterapeuta/Index");
@@ -140,7 +145,12 @@ namespace DiarioEmocional.Controllers
                         if (!await _userManager.IsInRoleAsync(user, psicoterapeutaModelView.RoleName))
                         {
                             await _userManager.AddToRoleAsync(user, psicoterapeutaModelView.RoleName);
-                            return RedirectToAction("Index", "Psicoterapeuta");
+
+                            var resultLogado = await _signInManager.PasswordSignInAsync(psicoterapeutaModelView.UserName, psicoterapeutaModelView.Password, false, false);
+
+                            if (resultLogado.Succeeded)
+                                return RedirectToAction("UsuarioLogado", "Psicoterapeuta");
+                            //return Redirect("/Psicoterapeuta/Index");
                         }
 
                     }
@@ -149,10 +159,10 @@ namespace DiarioEmocional.Controllers
                         ModelState.AddModelError("", error.Description);
                     }
                 }
-                return RedirectToPage("/Psicoterapeuta/Register");
+                return RedirectToPage("/Home/Index");
 
             }
-            return RedirectToPage("/Psicoterapeuta/Register");
+            return RedirectToPage("/Home/Index");
         }
 
         public async Task<Usuario> GetUser()

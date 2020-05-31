@@ -114,6 +114,14 @@ namespace DiarioEmocional.Controllers
                 var roles = await _signInManager.UserManager.GetRolesAsync(user);
 
                 var Paciente = roles.Where(x => x.Equals("Paciente")).Any();
+                var Psicoterapeuta = roles.Where(x => x.Equals("Psicoterapeuta")).Any();
+                if (Psicoterapeuta)
+                {
+                    var result = await _signInManager.PasswordSignInAsync(loginModel.UserName, loginModel.Password, loginModel.RememberMe, false);
+
+                    if (result.Succeeded)
+                        return RedirectToAction("UsuarioLogado", "Psicoterapeuta");
+                }
                 if (Paciente)
                 {
                     var result = await _signInManager.PasswordSignInAsync(loginModel.UserName, loginModel.Password, loginModel.RememberMe, false);
