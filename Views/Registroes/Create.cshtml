@@ -6,38 +6,46 @@
 
 <h1>Registrar Emoção</h1>
 <hr />
-<div class="row">
-    <div class="col">
+<div class="row justify-content-center">
+    <div class="col-11">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="EmocaoID" class="control-label"></label>
-                <select asp-for="EmocaoID" class="form-control" asp-items="ViewBag.EmocaoID"></select>
+            <div class="form-group row">
+                <select asp-for="EmocaoID" class="form-control form-control-lg" asp-items="ViewBag.EmocaoID">
+                    <option hidden>Emoção</option>
+                </select>
             </div>
-            <div class="form-group">
-                <label asp-for="Situacao" class="control-label"></label>
-                <input asp-for="Situacao" class="form-control" placeholder="Digite o que encadeou essa emoção" />
+            <div class="form-group row">
+                <input asp-for="Situacao" class="form-control form-control-lg" placeholder="Digite o que encadeou essa emoção" />
                 <span asp-validation-for="Situacao" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="IntensidadeID" class="control-label"></label>
-                <select asp-for="IntensidadeID" class="form-control" asp-items="ViewBag.IntensidadeID"></select>
+            <div class="form-group row">
+                <select asp-for="IntensidadeID" class="form-control form-control-lg" asp-items="ViewBag.IntensidadeID">
+                    <option hidden>Intensidade</option>
+                </select>
             </div>
 
-            <div class="form-group">
-                <label asp-for="Comportamento" class="control-label"></label>
-                <input asp-for="Comportamento" class="form-control" placeholder="Digite como você reagiu diante dessa situação" />
+            <div class="form-group row">
+                <input asp-for="Comportamento" class="form-control form-control-lg" placeholder="Digite como você reagiu diante dessa situação" />
                 <span asp-validation-for="Comportamento" class="text-danger"></span>
             </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="EnviarPsicoterapeuta" /> Enviar emoção ao psicólogo ?
-                </label>
+            <div class="form-group row">
+                <div class="btn-group-toggle" data-toggle="buttons">
+                    <label class="btn btn-secondary">
+                        <input type="checkbox" checked autocomplete="off" asp-for="EnviarPsicoterapeuta"> Enviar ao psicólogo 
+                    </label>
+                </div>
+                @*<label class="form-check">
+                    <input class="form-check-input form-control-lg" asp-for="EnviarPsicoterapeuta" /> Enviar emoção ao psicólogo ?
+                </label>*@
             </div>
-
-            <div class="form-group">
-                <input type="submit" value="Salvar" class="btn btn-success" /> |
-                <a asp-action="Index" class="btn btn-dark">Voltar ao Histórico de Emoções</a>
+            <div class="form-group row">
+                <div class="col">
+                    <input type="submit" value="Salvar" class="btn btn-success btn-lg btn-block" /> 
+                </div>
+                <div class="col">
+                    <a asp-action="Index" class="btn btn-dark btn-lg btn-block">Voltar </a>
+                </div>
             </div>
         </form>
     </div>
