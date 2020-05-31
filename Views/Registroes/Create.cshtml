@@ -7,7 +7,7 @@
 <h1>Registrar Emoção</h1>
 <hr />
 <div class="row">
-    <div class="col-md-4">
+    <div class="col">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
@@ -16,7 +16,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Situacao" class="control-label"></label>
-                <input asp-for="Situacao" class="form-control"  placeholder="Digite o que encadeou essa emoção"/>
+                <input asp-for="Situacao" class="form-control" placeholder="Digite o que encadeou essa emoção" />
                 <span asp-validation-for="Situacao" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -26,7 +26,7 @@
 
             <div class="form-group">
                 <label asp-for="Comportamento" class="control-label"></label>
-                <input asp-for="Comportamento" class="form-control" placeholder="Digite como você reagiu diante dessa situação"/>
+                <input asp-for="Comportamento" class="form-control" placeholder="Digite como você reagiu diante dessa situação" />
                 <span asp-validation-for="Comportamento" class="text-danger"></span>
             </div>
             <div class="form-group form-check">
@@ -34,7 +34,7 @@
                     <input class="form-check-input" asp-for="EnviarPsicoterapeuta" /> Enviar emoção ao psicólogo ?
                 </label>
             </div>
-            
+
             <div class="form-group">
                 <input type="submit" value="Salvar" class="btn btn-success" /> |
                 <a asp-action="Index" class="btn btn-dark">Voltar ao Histórico de Emoções</a>

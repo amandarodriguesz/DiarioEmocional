@@ -47,7 +47,7 @@ namespace DiarioEmocional
              
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-
+            services.AddProgressiveWebApp();
             //services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme);
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
