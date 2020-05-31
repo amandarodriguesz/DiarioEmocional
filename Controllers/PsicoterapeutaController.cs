@@ -8,6 +8,7 @@ using DiarioEmocional.ModelView;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
 namespace DiarioEmocional.Controllers
@@ -67,9 +68,11 @@ namespace DiarioEmocional.Controllers
             if (!string.IsNullOrEmpty(id))
             {
                 var registros = _context.Registros
-                                .Where(x => x.UsuarioInclusao == id
+                                        .Include(r => r.Emocao)
+                                        .Include(r => r.Intensidade)
+                                        .Where(x => x.UsuarioInclusao == id
                                         && x.EnviarPsicoterapeuta //lista somente registros que o paciente enviou
-                                        && x.Ativo).ToList();
+                                        && x.Ativo);
                 
                 
                 return View(registros);
