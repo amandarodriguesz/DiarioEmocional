@@ -13058,11 +13058,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Amanda Rodrigues\\Desktop\\DiarioEmocional\\DiarioEmocional\\DiarioEmocional.csproj",
+      "projectUniqueName": "C:\\Users\\Amanda Rodrigues\\Documents\\Sistemas para Internet\\TCC\\ProjetoParaPrints\\DiarioEmocional\\DiarioEmocional.csproj",
       "projectName": "DiarioEmocional",
-      "projectPath": "C:\\Users\\Amanda Rodrigues\\Desktop\\DiarioEmocional\\DiarioEmocional\\DiarioEmocional.csproj",
+      "projectPath": "C:\\Users\\Amanda Rodrigues\\Documents\\Sistemas para Internet\\TCC\\ProjetoParaPrints\\DiarioEmocional\\DiarioEmocional.csproj",
       "packagesPath": "C:\\Users\\Amanda Rodrigues\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Amanda Rodrigues\\Desktop\\DiarioEmocional\\DiarioEmocional\\obj\\",
+      "outputPath": "C:\\Users\\Amanda Rodrigues\\Documents\\Sistemas para Internet\\TCC\\ProjetoParaPrints\\DiarioEmocional\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
